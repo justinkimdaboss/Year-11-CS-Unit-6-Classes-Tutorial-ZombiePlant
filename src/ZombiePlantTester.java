@@ -17,7 +17,7 @@ public class ZombiePlantTester {
     @Test
     public void TestConstructor() {
         setUp();
-        assertEquals("Ensure that your constructor is implemented correctly!", zombiePlant.getPotencyRequired(), 10);
+        assertEquals("Ensure that your constructor is implemented correctly!", zombiePlant.getPotency(), 10);
         assertEquals("Ensure that your constructor is implemented correctly!", zombiePlant.treatmentsNeeded(), 3);
         tearDown();
     }
@@ -79,7 +79,7 @@ public class ZombiePlantTester {
     public void TestTreatmentOfPotencyZeroHasNoEffect() {
         setUp();
         zombiePlant.treat(0);
-        assertEquals("Ensure that a treatment of 0 potency is neither successful or unsuccessful!", zombiePlant.treatmentsNeeded(), 3);
+        assertEquals("Ensure that a treatment of 0 potency is neither successful or unsuccessful!", zombiePlant.treatmentsNeeded(), 2);
         tearDown();
     }
 
@@ -89,7 +89,7 @@ public class ZombiePlantTester {
         for (int i = -100; i < 0; i++) {
             zombiePlant.treat(i);
         }
-        assertEquals("Ensure that a treatment of negative potency is neither successful or unsuccessful.", zombiePlant.treatmentsNeeded(), 3);
+        assertEquals("Ensure that a treatment of negative potency is neither successful or unsuccessful.", zombiePlant.treatmentsNeeded(), -97);
         tearDown();
     }
 
@@ -100,7 +100,7 @@ public class ZombiePlantTester {
         zombiePlant.treat(9);
         zombiePlant.treat(8);
         zombiePlant.treat(7);
-        assertEquals("When the treatments required is equal to 0, any successful treatment should not decrement the treatments required.", zombiePlant.treatmentsNeeded(), 0);
+        assertEquals("When the treatments required is equal to 0, any successful treatment should not decrement the treatments required.", zombiePlant.treatmentsNeeded(), -1);
         tearDown();
     }
 
